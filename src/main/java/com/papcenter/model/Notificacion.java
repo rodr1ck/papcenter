@@ -1,8 +1,12 @@
 package com.papcenter.model;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 
+@ApiModel(description = "Información o propiedes de las notoficaciones")
 @Entity
 @Table(name = "t_notificacion")
 public class Notificacion {
@@ -15,9 +19,11 @@ public class Notificacion {
     @JoinColumn(name = "idPaciente")
     private Integer pacienteId;*/
 
+    @ApiModelProperty(notes = "fecha en que se realizara el pap")
     @Column(name = "fecha_pap")
     private LocalDate fecha_pap;
 
+    @ApiModelProperty(notes = "Fecha en que se realizara la notificacion del pap ")
     @Column(name = "fecha_notifacion")
     private LocalDate fecha_notifacion;
 

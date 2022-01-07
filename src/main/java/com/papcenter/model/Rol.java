@@ -1,7 +1,10 @@
 package com.papcenter.model;
 
+import io.swagger.annotations.ApiModel;
+
 import javax.persistence.*;
 
+@ApiModel(description = "Información o propiedes del rol")
 @Entity
 @Table(name = "t_rol")
 public class Rol {

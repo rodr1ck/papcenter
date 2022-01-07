@@ -1,8 +1,11 @@
 package com.papcenter.model;
 
+import io.swagger.annotations.ApiModel;
+
 import javax.persistence.*;
 import java.util.List;
 
+@ApiModel(description = "Información o propiedes del usuario")
 @Entity
 @Table(name = "t_usuario")
 public class Usuario {
