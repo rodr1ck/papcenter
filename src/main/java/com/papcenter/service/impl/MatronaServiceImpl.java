@@ -1,6 +1,8 @@
 package com.papcenter.service.impl;
 
+import com.papcenter.exception.ModelNotFoundException;
 import com.papcenter.model.Matrona;
+import com.papcenter.model.Paciente;
 import com.papcenter.repository.MatronaRepository;
 import com.papcenter.service.MatronaService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,10 +22,20 @@ public class MatronaServiceImpl implements MatronaService {
         return matronaRepository.findAll();
     }
 
-    @Override
+   /* @Override
     public Matrona findById(Integer id) {
         Optional<Matrona> matrona = matronaRepository.findById(id);
         return matrona.isPresent() ? matrona.get() : new Matrona();
+    } */
+
+    @Override
+    public Matrona findById(Integer id) {
+        Optional<Matrona> op = matronaRepository.findById(id);
+        if(op.isPresent()){
+            return op.get();
+        }else{
+            throw new ModelNotFoundException("Matrona no encontrada");
+        }
     }
 
     @Override

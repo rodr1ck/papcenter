@@ -3,9 +3,10 @@ package com.papcenter.service.impl;
 import com.papcenter.model.Paciente;
 import com.papcenter.repository.PacienteRepository;
 import com.papcenter.service.PacienteService;
-import java.util.ArrayList;
+
 import java.util.List;
 import java.util.Optional;
+import com.papcenter.exception.ModelNotFoundException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,10 +27,20 @@ public class PacienteServiceImpl implements PacienteService {
         return pacienteRepository.findAll();
     }
 
-    @Override
+   /* @Override
     public Paciente findById(Integer id) {
         Optional<Paciente> op = pacienteRepository.findById(id);
         return op.isPresent() ? op.get() : new Paciente();
+    }*/
+
+    @Override
+    public Paciente findById(Integer id) {
+        Optional<Paciente> op = pacienteRepository.findById(id);
+        if(op.isPresent()){
+            return op.get();
+        }else{
+            throw new ModelNotFoundException("Paciente no encontrado");
+        }
     }
 
     @Override
