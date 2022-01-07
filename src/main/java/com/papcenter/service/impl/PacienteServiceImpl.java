@@ -37,21 +37,15 @@ public class PacienteServiceImpl implements PacienteService {
         return pacienteRepository.save(paciente);
     }
 
-   /* @Override
-    public List<Paciente> findByRut(String rut) {
-        List<Paciente> pacientes = new ArrayList<>();
-        if(rut != null && !"".equalsIgnoreCase(rut)){
-            if(rut.equalsIgnoreCase("ALL")){
-                pacientes = findAll();
-            }else if(rut.equalsIgnoreCase("City")){
-                //buscar todos los pacientes por la ciudad
-                pacientes = findAll();
-            }else{
-                Paciente paciente = findById(1);
-                pacientes.add(paciente);
-            }
-        }
-        return pacientes;
-    } */
+    @Override
+    public Paciente update(Paciente paciente) {
+        return save(paciente);
+    }
+
+    @Override
+    public boolean delete(Integer id) {
+        pacienteRepository.deleteById(id);
+        return true;
+    }
 
 }

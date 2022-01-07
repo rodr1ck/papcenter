@@ -36,4 +36,9 @@ public class PacienteController {
         return pacienteService.save(paciente);
     }
 
+    @DeleteMapping ("/{id}")
+    public boolean deleteById(@PathVariable("id") Integer id){
+        return pacienteService.delete(id);
+    }
+
 }
