@@ -55,9 +55,34 @@ public class Paciente {
     private String email;
 
     //@OneToMany(mappedBy = "idNotificacion", fetch = FetchType.LAZY, orphanRemoval = false, cascade = CascadeType.ALL)
-    @OneToMany(cascade = CascadeType.ALL)
+    /*@OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "notification_fkid", referencedColumnName = "id_paciente")
-    private List<Notificacion> listNotificaciones = new ArrayList<>();
+    private List<Notificacion> listNotificaciones = new ArrayList<>();*/
+
+    @ManyToOne
+    @JoinColumn(name = "id_matrona", nullable = true, foreignKey = @ForeignKey(name = "FK_paciente_matrona"))
+    private Matrona matrona;
+
+    @ManyToOne
+    @JoinColumn(name = "id_cesfam", nullable = false, foreignKey = @ForeignKey(name = "FK_paciente_cesfam"))
+    private Cesfam cesfam;
+
+    public Cesfam getCesfam() {
+        return cesfam;
+    }
+
+    public void setCesfam(Cesfam cesfam) {
+        this.cesfam = cesfam;
+    }
+
+
+    public Matrona getMatrona() {
+        return matrona;
+    }
+
+    public void setMatrona(Matrona matrona) {
+        this.matrona = matrona;
+    }
 
     public String getRut() {
         return rut;

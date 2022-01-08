@@ -35,9 +35,21 @@ public class Matrona {
     @Column(name = "telefono", length = 20)
     private String telefono;
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @ManyToOne
+    @JoinColumn(name = "id_cesfam", nullable = false, foreignKey = @ForeignKey(name = "FK_matrona_cesfam"))
+    private Cesfam cesfam;
+
+   /* @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "paciente_fkid", referencedColumnName = "id_matrona")
-    private List<Paciente> listPacientes = new ArrayList<>();
+    private List<Paciente> listPacientes = new ArrayList<>();*/
+
+    public Cesfam getCesfam() {
+        return cesfam;
+    }
+
+    public void setCesfam(Cesfam cesfam) {
+        this.cesfam = cesfam;
+    }
 
     public Integer getIdMatrona() {
         return idMatrona;
@@ -79,11 +91,4 @@ public class Matrona {
         this.telefono = telefono;
     }
 
-    public List<Paciente> getListPacientes() {
-        return listPacientes;
-    }
-
-    public void setListPacientes(List<Paciente> listPacientes) {
-        this.listPacientes = listPacientes;
-    }
 }

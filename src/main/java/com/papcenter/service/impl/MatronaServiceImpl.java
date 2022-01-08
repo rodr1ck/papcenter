@@ -1,6 +1,8 @@
 package com.papcenter.service.impl;
 
+import com.papcenter.exception.CesfamNotFound;
 import com.papcenter.exception.ModelNotFoundException;
+import com.papcenter.model.Cesfam;
 import com.papcenter.model.Matrona;
 import com.papcenter.model.Paciente;
 import com.papcenter.repository.MatronaRepository;
@@ -40,6 +42,10 @@ public class MatronaServiceImpl implements MatronaService {
 
     @Override
     public Matrona save(Matrona matrona) {
+
+        if(!(matrona.getCesfam() instanceof Cesfam) ){
+            throw new CesfamNotFound("No es un Cesfam");
+        }
         return matronaRepository.save(matrona);
     }
 
