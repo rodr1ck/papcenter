@@ -5,7 +5,6 @@ import java.time.LocalDate;
 
 public class MatronaPacienteDTO implements Serializable {
 
-
     private Integer idMatrona;
     private String nombres;
     private String apellidos;

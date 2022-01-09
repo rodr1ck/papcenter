@@ -7,9 +7,6 @@ import org.springframework.stereotype.Service;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import org.modelmapper.ModelMapper;
-import org.modelmapper.convention.MatchingStrategies;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -23,7 +20,7 @@ public class MatronaPacienteService {
     @Autowired
     private ModelMapper modelMapper;
 
-    public List<MatronaPacienteDTO> getAllMatronaPaciente(){
+    public List<MatronaPacienteDTO> getAllMatronaPaciente() {
         return matronapacienteRepository.findAll()
                 .stream()
                 .map(this::convertEntityToDto)
@@ -31,7 +28,7 @@ public class MatronaPacienteService {
 
     }
 
-    private MatronaPacienteDTO convertEntityToDto(Paciente paciente){
+    private MatronaPacienteDTO convertEntityToDto(Paciente paciente) {
         modelMapper.getConfiguration()
                 .setMatchingStrategy(MatchingStrategies.LOOSE);
         MatronaPacienteDTO matronaPacienteDTO = new MatronaPacienteDTO();
@@ -39,7 +36,7 @@ public class MatronaPacienteService {
         return matronaPacienteDTO;
     }
 
-    private Paciente convertDtoToEntity(MatronaPacienteDTO matronaPacienteDTO){
+    private Paciente convertDtoToEntity(MatronaPacienteDTO matronaPacienteDTO) {
         modelMapper.getConfiguration()
                 .setMatchingStrategy(MatchingStrategies.LOOSE);
         Paciente paciente = new Paciente();
